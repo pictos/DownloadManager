@@ -3,12 +3,23 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid71;MonoAndroid80;MonoAndroid81;uap10.0.16299</TargetFrameworks>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <Description>Download Manager to Xamarin applications.</Description>
+    <Copyright></Copyright>
+    <PackageLicenseUrl>https://github.com/pictos/DownloadManager/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/pictos/downloadmanager</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pictos/downloadmanager</RepositoryUrl>
+    <RepositoryType>Open Souce</RepositoryType>
+    <Authors>Pedro Jesus</Authors>
+    <Company>PedroJesus</Company>
+    <PackageTags>download; xamarin; plugin</PackageTags>
   </PropertyGroup>
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 
   <ItemGroup>
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.6.68" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
     <Compile Include="**\*.shared.cs" />
     <Compile Include="**\*.shared.*.cs" />
   </ItemGroup>
