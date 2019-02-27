@@ -1,10 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.IO.Pipes;
 
 namespace DownloadManager
 {
@@ -44,7 +42,7 @@ namespace DownloadManager
                 using (var streamToReadFrom = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                 {
                     var totalRead = 0L;
-                    var buffer = new byte[1024];
+                    var buffer = new byte[2048];
                     var isMoreToRead = true;
                     var fileWriteTo = Path.Combine(path, file);
                     var output = new FileStream(fileWriteTo, FileMode.Create);
@@ -59,9 +57,6 @@ namespace DownloadManager
 
                         else
                         {
-                            var data = new byte[read];
-                            buffer.ToList().CopyTo(0, data, 0, read);
-
                             await output.WriteAsync(buffer, 0, read);
 
                             totalRead += read;
