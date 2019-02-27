@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO.Pipes;
 
 namespace DownloadManager
 {
@@ -27,9 +28,7 @@ namespace DownloadManager
             IProgress<double> progress = default(IProgress<double>), 
             CancellationToken token = default(CancellationToken))
         {
-            var teste = file.IsValidString();
-            var teste2 = url.IsValidString();
-            if (!(teste && teste2))
+            if (!(file.IsValidString() && url.IsValidString()))
                 throw new ArgumentNullException($"the {nameof(file)} and {nameof(url)} parameters can't be null.");
 
             //TODO colocar isso dentro de alguma pasta
@@ -49,7 +48,6 @@ namespace DownloadManager
                     var isMoreToRead = true;
                     var fileWriteTo = Path.Combine(path, file);
                     var output = new FileStream(fileWriteTo, FileMode.Create);
-
                     do
                     {
                         token.ThrowIfCancellationRequested();
