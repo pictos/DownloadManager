@@ -14,6 +14,9 @@
     <Authors>Pedro Jesus</Authors>
     <Company>PedroJesus</Company>
     <PackageTags>download; xamarin; plugin</PackageTags>
+    <VersionSuffix Condition=" '$(Configuration)' == 'Debug' ">debug</VersionSuffix>
+    <!-- For local/debug builds -->
+    <VersionSuffix Condition=" '$(Build_SourceBranch)' == 'refs/heads/develop' ">pre.$(Build_BuildID)</VersionSuffix>
   </PropertyGroup>
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 
